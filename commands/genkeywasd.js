@@ -23,7 +23,7 @@ module.exports = {
     const level = config.tweakerKeyLevel || 1;
 
     try {
-      const url = `https://keyauth.win/api/seller/?sellerkey=137578185050bea30a7561596a4aa6ff&type=add&expiry=${expiryDays}&mask=LR-******-******-******-******&level=${level}&amount=1&format=text`;
+      const url = `https://keyauth.win/api/seller/?sellerkey=137578185050bea30a7561596a4aa6ff&type=add&expiry=${expiryDays}&mask=WASD-******-******-******-******&level=${level}&amount=1&format=text`;
       const response = await axios.get(url);
       const generatedKey = response.data.trim();
 
