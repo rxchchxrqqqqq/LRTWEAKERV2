@@ -4,5 +4,5 @@ module.exports = {
   customerRoleId: process.env.CUSTOMER_ROLE_ID || '',
   supportRoleId: process.env.SUPPORT_ROLE_ID || '',
   tweakerKeyLevel: parseInt(process.env.TWEAKER_KEY_LEVEL) || 1,
-  wasdKeyLevel: parseInt(process.env.WASD_KEY_LEVEL) || 2
+  wasdKeyLevel: parseInt(process.env.WASD_KEY_LEVEL) || 1
 };
