@@ -4,8 +4,8 @@ const config = require('../config.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('genkeywasd')
-    .setDescription('Generiert einen Key für WASD Tweaker und sendet ihn an den User')
+    .setName('genkeytweak')
+    .setDescription('Generiert einen Key für LR WASD Tweaker und sendet ihn an den User')
     .addUserOption(option =>
       option.setName('user')
         .setDescription('Der User, der den Key erhalten soll')
@@ -20,10 +20,10 @@ module.exports = {
     await interaction.deferReply();
     const targetUser = interaction.options.getUser('user');
     const expiryDays = interaction.options.getInteger('tage') || 30;
-    const level = config.wasdKeyLevel || 1;
+    const level = config.tweakerKeyLevel || 1;
 
     try {
-      const url = `https://keyauth.win/api/seller/?sellerkey=137578185050bea30a7561596a4aa6ff&type=add&expiry=${expiryDays}&mask=WASD-******-******-******-******&level=${level}&amount=1&format=text`;
+      const url = `https://keyauth.win/api/seller/?sellerkey=137578185050bea30a7561596a4aa6ff&type=add&expiry=${expiryDays}&mask=LR-******-******-******-******&level=${level}&amount=1&format=text`;
       const response = await axios.get(url);
       const generatedKey = response.data.trim();
 
@@ -48,9 +48,9 @@ module.exports = {
       let dmSent = false;
       try {
         await targetUser.send(
-          `🔑 **WASD Tweaker Lizenzschlüssel**\n\n` +
+          `🔑 **LR WASD Tweaker Lizenzschlüssel**\n\n` +
           `Hallo ${targetUser},\n` +
-          `hier ist dein Lizenzschlüssel für den **WASD Tweaker**:\n` +
+          `hier ist dein Lizenzschlüssel für den **LR WASD Tweaker V2**:\n` +
           `\`${generatedKey}\`\n\n` +
           `**Gültigkeit:** ${expiryDays} Tage\n\n` +
           `*Bitte gib diesen Key nicht an Dritte weiter!*`
@@ -60,7 +60,7 @@ module.exports = {
         console.error('DM konnte nicht gesendet werden:', dmError);
       }
 
-      let responseText = `✅ **WASD Key erfolgreich generiert!**\n\n`;
+      let responseText = `✅ **Key erfolgreich generiert!**\n\n`;
       responseText += `👤 **Nutzer:** ${targetUser} (${targetUser.tag})\n`;
       responseText += `🔑 **Key:** \`${generatedKey}\`\n`;
       responseText += `📅 **Gültigkeit:** ${expiryDays} Tage\n`;
